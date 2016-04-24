@@ -17,8 +17,10 @@
 #
 FROM debian:jessie
 RUN apt-get update
-RUN apt-get install -y git-core python python-dev python-lxml python-imaging python-virtualenv npm nodejs-legacy automake nginx
-RUN apt-get install -y sudo
+RUN apt-get install -y sudo git-core
+RUN apt-get install -y python python-dev python-lxml python-imaging python-virtualenv
+RUN apt-get install -y npm nodejs-legacy automake
+RUN apt-get install -y nginx
 RUN useradd -c "GNU MediaGoblin system account" -d /var/lib/mediagoblin -m -r -g www-data mediagoblin
 RUN groupadd mediagoblin && sudo usermod --append -G mediagoblin mediagoblin
 RUN mkdir -p /var/log/mediagoblin && chown -hR mediagoblin:mediagoblin /var/log/mediagoblin
